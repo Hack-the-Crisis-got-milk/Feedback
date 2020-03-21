@@ -15,3 +15,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/provideFeedback', 'FeedbackController@provideFeedback');
 Route::get('/getFeedbackForShops', 'FeedbackController@getFeedbackForShops');
+Route::post('/registerDevice', 'DeviceController@registerDevice');
+Route::post('/addToWishlist', 'WishlistController@addToWishlist');
