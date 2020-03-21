@@ -31,7 +31,6 @@ class Kernel extends ConsoleKernel
             $client = new \GuzzleHttp\Client();
             $url = "https://onesignal.com/api/v1/notifications";
 
-
             $wishlists = Wishlist::all();
             foreach ($wishlists as $wishlist) {
                 $feedbackValue = Feedback::where('item_group_id', $wishlist->item_group_id)
@@ -41,17 +40,15 @@ class Kernel extends ConsoleKernel
 
                 if ($feedbackValue === 'true') {
                     foreach (Device::all() as $device) {
-                        $request = $client->post($url,
+                        $client->post($url,
                             [
                                 'headers'         => ['Content-Type' => 'application/json'],
                                 'body' => json_encode([
-                                    'include_player_ids' => $device->device_token,
-                                    'app_id' => '12'
+                                    'include_player_ids' => [$device->device_token],
+                                    'app_id' => '348d1c77-3a1c-426f-ab79-cf55ae4e7a02'
                                 ])
                             ]
                         );
-                        $response = $request->send();
-                        dd($response);
                     }
                 }
             }
