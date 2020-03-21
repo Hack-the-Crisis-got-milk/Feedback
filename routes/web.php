@@ -13,5 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/provideFeedback', 'FeebackController@provideFeedback');
-Route::get('/getFeedbackForShops', 'FeebackController@getFeedbackForShops');
+Route::post('/provideFeedback', 'FeedbackController@provideFeedback');
+Route::get('/getFeedbackForShops', 'FeedbackController@getFeedbackForShops');

@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Http\Controllers;
-
 
 use App\Feedback;
 use Illuminate\Http\Request;
@@ -25,13 +23,13 @@ class FeedbackController extends Controller
 
     public function getFeedbackForShops(Request $request)
     {
-        $shopIds = $request->input('shopIds');
-
+        $shopIds = json_decode($request->input('shopIds'), true);
         $feedBacks = [];
+
         foreach ($shopIds as $shopId) {
             $feedBacks[] = Feedback::where('shop_id', $shopId)->get();
         }
 
-        return response(['feedBacks' => $feedBacks]);
+        return response(['feedbacks' => $feedBacks]);
     }
 }
